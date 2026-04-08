@@ -1,4 +1,7 @@
-
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1+-5391FE?logo=powershell&logoColor=white)
+![Windows](https://img.shields.io/badge/Platform-Windows-blue)
+![Automation](https://img.shields.io/badge/Focus-Automation-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 # PowerShell Endpoint Automation Toolkit
 
 A small, sanitized PowerShell toolkit demonstrating practical automation and diagnostics for Windows endpoints.
