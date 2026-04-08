@@ -1,88 +1,108 @@
+
 # PowerShell Endpoint Automation Toolkit
 
-A small, sanitized portfolio kit that demonstrates a practical Windows automation approach without exposing any organization-specific infrastructure details.
+A small, sanitized PowerShell toolkit demonstrating practical automation and diagnostics for Windows endpoints.
+
+The scripts in this repository reflect real-world system administration tasks such as health checks, deployment validation, and troubleshooting.  
+All examples are intentionally generic and contain **no organization-specific infrastructure details**.
+PowerShell utilities focused on endpoint diagnostics, troubleshooting, and deployment readiness.
+
+---
 
 ## Goals
 
-- Show a troubleshooting and automation mindset
-- Demonstrate clear, reusable PowerShell structure
+- Demonstrate a troubleshooting and automation mindset
+- Show clear, reusable PowerShell structure
+- Provide examples useful for Windows endpoint environments
 - Keep all examples safe for public sharing
-- Avoid any environment-specific names, domains, server paths, or internal identifiers
+- Avoid organization-specific domains, server paths, or internal identifiers
+
+---
+
+## Repository Structure
+
+```
+docs/
+    Documentation and reference notes
+
+examples/
+    Audit-OrphanedUserProfiles.ps1
+    Collect-SystemDiagnostics.ps1
+    Scan-EndpointHealth.ps1
+    Test-DeploymentReadiness.ps1
+
+LICENSE
+README.md
+```
+
+Scripts in the **examples** folder are intentionally sanitized so they can be safely shared publicly.
+
+---
 
 ## Included Examples
 
-### 1. `Scan-EndpointHealth.ps1`
-Collects a basic health snapshot from a Windows endpoint, including:
-- Computer name
-- OS version
-- Last boot time
-- Disk free space
-- Defender service state
-- Recent reboot indicator
+### Scan-EndpointHealth.ps1
+Collects a quick health snapshot from a Windows endpoint, including:
 
-Outputs a small object that can be exported to CSV or JSON.
+- Operating system information
+- Disk status
+- Service health
+- Basic system diagnostics
 
-### 2. `Test-DeploymentReadiness.ps1`
-Performs a generic pre-deployment readiness check:
-- Confirms PowerShell version
-- Checks available disk space
-- Verifies admin rights
-- Confirms Windows Installer service state
-- Reports whether a reboot may be pending
+---
 
-### 3. `Collect-SystemDiagnostics.ps1`
-Gathers lightweight diagnostic information useful during troubleshooting:
-- Running services
-- Recent application/system errors
-- Network adapter summary
-- Installed hotfix summary
+### Test-DeploymentReadiness.ps1
+Checks whether a system is ready for software deployment by validating:
 
-## Safe-for-Sharing Rules
+- Disk space
+- Operating system version
+- Required services
+- Basic environment readiness
 
-Before publishing any script, remove or replace:
+---
 
-- Domain names
-- Organization names
-- School, district, or agency names
-- Internal UNC paths
-- Server names or IP addresses
-- Real invitation codes, tokens, keys, or secrets
-- Usernames tied to real environments
-- GPO names, OU names, or internal package paths
+### Collect-SystemDiagnostics.ps1
+Gathers troubleshooting information useful for diagnosing endpoint problems.
 
-Replace them with neutral values such as:
+Examples of collected information may include:
 
-- `contoso.local`
-- `fileserver`
-- `\\server\share\Logs`
-- `C:\ProgramData\Toolkit\Logs`
-- `example-token`
+- system configuration
+- running services
+- event log summaries
+- environment details
 
-## Suggested Repository Structure
+---
 
-```text
-PowerShell-Endpoint-Automation-Toolkit/
-├── README.md
-├── LICENSE
-├── .gitignore
-├── examples/
-│   ├── Scan-EndpointHealth.ps1
-│   ├── Test-DeploymentReadiness.ps1
-│   └── Collect-SystemDiagnostics.ps1
-└── docs/
-    └── portfolio-summary.md
+### Audit-OrphanedUserProfiles.ps1
+Scans Windows user profile registry entries and identifies profiles that may be orphaned or in a failed state.
+
+This script inspects the following registry location:
+
+```
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
 ```
 
-## How to Present This on GitHub
+and reports profiles with suspicious state values.
 
-In your repository description, keep it simple:
+---
 
-> Practical PowerShell examples for endpoint health checks, deployment readiness, and Windows diagnostics.
+## Example Workflow
 
-In your profile or application, you can describe it like this:
+A typical endpoint troubleshooting workflow might look like:
 
-> I build PowerShell tools that focus on repeatable diagnostics, deployment safety checks, and operational reliability in Windows environments.
+1. Run **Scan-EndpointHealth.ps1** to capture a quick system overview  
+2. Run **Test-DeploymentReadiness.ps1** before pushing software updates  
+3. Use **Collect-SystemDiagnostics.ps1** for deeper troubleshooting  
+4. Use **Audit-OrphanedUserProfiles.ps1** to detect profile corruption or orphaned accounts  
 
-## Notes
+---
 
-These examples are intentionally generic. They are meant to demonstrate structure, judgment, and maintainability—not reveal details of any production environment.
+## License
+
+This project is released under the **MIT License**.
+
+---
+
+## Author
+
+Barry M. Page
