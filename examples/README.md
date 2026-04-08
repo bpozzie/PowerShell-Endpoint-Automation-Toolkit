@@ -1,5 +1,7 @@
 # Example Scripts
 
+This repository provides example PowerShell scripts that demonstrate practical automation techniques commonly used in Windows endpoint administration.
+
 This directory contains example PowerShell scripts demonstrating common endpoint automation and diagnostic tasks.
 
 These scripts are intentionally generic and sanitized so they can be safely shared publicly.
